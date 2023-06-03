@@ -1,4 +1,9 @@
-# MyApp
+# Angular Practice
+
+Practice project to learn Angular basics, taken from the JavaScript Programming course (D280) at Western Governor's University.
+
+[Western Governor's University](https://wgu.edu)
+[WGU Software Engineering Bachelors Degree Program](https://www.wgu.edu/online-it-degrees/software-engineering-bachelors-program.html)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.4.
 
