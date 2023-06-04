@@ -1,1 +1,147 @@
-<p>projects-home works!</p>
+<div>
+  <h2 class="projectTitle">Project 1 - The Dynamic Business Card</h2>
+  <hr />
+  <form>
+      <fieldset>
+          <legend>Modify Your Business Card</legend>
+          <ul class="wrapper">
+            <li class="form-row">
+              <label>First Name:</label>
+              <input
+                [value]="cardForm.firstName"
+                (keyup)="cardForm.firstName = getEventValue($event)"
+              />
+            </li>
+            <li class="form-row">
+              <label>Last Name:</label>
+              <input
+                [value]="cardForm.lastName"
+                (keyup)="cardForm.lastName = getEventValue($event)"
+              />
+            </li>
+            <li class="form-row">
+              <label>Phone Number:</label>
+              <input
+                [value]="cardForm.phone"
+                (keyup)="cardForm.phone = getEventValue($event)"
+              />
+            </li>
+            <li class="form-row">
+              <label>Company Name:</label>
+              <input
+                [value]="cardForm.company"
+                (keyup)="cardForm.company = getEventValue($event)"
+              />
+            </li>
+            <li class="form-row">
+              <label>Job Title:</label>
+              <input
+                [value]="cardForm.title"
+                (keyup)="cardForm.title = getEventValue($event)"
+              />
+            </li>
+            <div class="inner-form">
+              <label>Address:</label>
+              <li class="form-row">
+                <label>Street</label>
+                <input
+                  [value]="cardForm.address.street"
+                  (keyup)="cardForm.address.street = getEventValue($event)"
+                />
+              </li>
+              <li class="form-row">
+                <label>City</label>
+                <input
+                  [value]="cardForm.address.city"
+                  (keyup)="cardForm.address.city = getEventValue($event)"
+                />
+              </li>
+              <li class="form-row">
+                <label>State</label>
+                <input
+                  [value]="cardForm.address.state"
+                  (keyup)="cardForm.address.state = getEventValue($event)"
+                />
+              </li>
+              <li class="form-row">
+                <label>Zip</label>
+                <input
+                  [value]="cardForm.address.zip"
+                  (keyup)="cardForm.address.zip = getEventValue($event)"
+                />
+              </li>
+            </div>
+          </ul>
+      </fieldset>
+  </form>
+
+  <button class="card">
+    <div class="row clearfix">
+      <div class="left big">{{ cardForm.phone }}</div>
+      <div class="right">
+        <p>
+          <span *ngFor="let char of cardForm.company.split(''); let i = index">
+            <span
+              *ngIf="isNumeric(cardForm.company[i]) || (i !== cardForm.company.length + 1 && cardForm.company[i-1] === ' ') || i === 0; else elseBlock"
+            >
+              <span class="big">{{ char }}</span>
+            </span>
+            <ng-template #elseBlock>
+              <span class="small">{{ char }}</span>
+            </ng-template>
+          </span>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <p>
+        <span *ngFor="let char of cardForm.firstName.split(''); let i = index">
+          <span
+            *ngIf="isNumeric(cardForm.firstName[i]) || (i !== cardForm.firstName.length + 1 && cardForm.firstName[i-1] === ' ') || i === 0; else elseBlock"
+          >
+            <span class="big">{{ char }}</span>
+          </span>
+          <ng-template #elseBlock>
+            <span class="med">{{ char }}</span>
+          </ng-template>
+        </span>&nbsp;
+        <span *ngFor="let char of cardForm.lastName.split(''); let i = index">
+          <span
+            *ngIf="isNumeric(cardForm.lastName[i]) || (i !== cardForm.lastName.length + 1 && cardForm.lastName[i-1] === ' ') || i === 0; else elseBlock"
+          >
+            <span class="big">{{ char }}</span>
+          </span>
+          <ng-template #elseBlock>
+            <span class="med">{{ char }}</span>
+          </ng-template>
+        </span>
+      </p>
+      <p>{{ cardForm.title }}</p>
+    </div>
+    <div class="row">
+      <p>
+        <span *ngFor="let char of cardForm.address.street.split(''); let i = index">
+          <span
+            *ngIf="isNumeric(cardForm.address.street[i]) || (i !== cardForm.address.street.length + 1 && cardForm.address.street[i-1] === ' ') || i === 0; else elseBlock"
+          >
+            <span class="med">{{ char }}</span>
+          </span>
+          <ng-template #elseBlock>
+            <span class="small">{{ char }}</span>
+          </ng-template>
+        </span>&nbsp;
+        <span *ngFor="let char of cardForm.address.city.split(''); let i = index">
+          <span
+            *ngIf="isNumeric(cardForm.address.city[i]) || (i !== cardForm.address.city.length + 1 && cardForm.address.city[i-1] === ' ') || i === 0; else elseBlock"
+          >
+            <span class="med">{{ char }}</span>
+          </span>
+          <ng-template #elseBlock>
+            <span class="small">{{ char }}</span>
+          </ng-template>
+        </span>,
+        <span class="med">{{ cardForm.address.state }} {{ cardForm.address.zip }}</span>
+      </p>
+    </div>
+  </button>
+</div>
