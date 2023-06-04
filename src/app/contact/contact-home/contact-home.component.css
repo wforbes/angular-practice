@@ -168,8 +168,14 @@ body, button, input {
   outline: none;
 }
 
+.app-form-button:disabled,
+.app-form-button:disabled:hover {
+  color: #aaa;
+  cursor: not-allowed;
+}
+
 .app-form-button:hover {
-  color: #b9134f;
+  color: #3fa46a;
 }
 
 .credits {
