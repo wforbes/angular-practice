@@ -1,59 +1,35 @@
 <div class="resume">
   <div class="personalInfo">
-    <h1>Will Forbes</h1>
-    <address>1234 Fake Street<br>Los Angeles CA (987) 654-3210<br>wforbes87@gmail.com</address>
+    <h1>{{ dev.name }}</h1>
+    <address>
+      {{ dev.address.street }}<br>
+      {{ dev.address.city }}, {{ dev.address.state }} {{ dev.address.zip }}<br>
+      {{ dev.phone }} <br>
+      {{ dev.email }}
+    </address>
   </div>
 
   <div class="summary">
-    <h2>Work Goals:</h2>
+    <h2>Summary:</h2>
     <p>
-      Continue building my career as a software developer creating web or native applications that produce positive
-      results for individuals, organizations, and businesses. Contribute to a team solving difficult problems that
-      add value and make a difference.
+      {{ dev.summary }}
     </p>
   </div>
 
   <div class="education">
     <h2>Education</h2>
-    <p>WESTERN GOVERNORS UNIVERSITY <span class="educationDates">2019 - 2023</span><br />
-      Bachelor of Science, Software Engineering
+    <p>{{dev.education.school | uppercase }} <span class="educationDates">2019 - 2023</span><br />
+      {{ dev.education.degree }}
     </p>
   </div>
 
   <div class="experience">
     <h2>Experience</h2>
-    <p>RUSSELL SIGLER, Application Developer <span class="employmentDates">01/23 - Present</span></p>
-     <ul>
-       <li>Provide lead development on core microservices-based CRM application.</li>
-       <li>Utilize Next.js/React, Material-UI, TypeScript, Node.js/Express, and more.</li>
-       <li>Document development processes and diagram project architecture.</li>
-       <li>Coordinate project transition from 3rd party vendor to in-house support.</li>
-    </ul>
-    <p>JT4 LLC. (AFTC), Programmer II <span class="employmentDates">03/22 - 01/23</span></p>
-    <ul>
-      <li>Provide principle fullstack development on Vue.js and Django web application.</li>
-      <li>Architect an enterprise app solution serving multiple USAF bases.</li>
-      <li>Administer multiple installations of legacy C#/WPF/SQL software.</li>
-      <li>Awarded 'Employee of the Quarter' (Q3 2022).</li>
-    </ul>
-    <p>IntegrITS Corp. (416th FLTS), Programmer II <span class="employmentDates">01/20 - 03/22</span></p>
-    <ul>
-      <li>Principal developer on a Vue.js web app integrated with SharePoint API.</li>
-      <li>Configure SharePoint 2019 solution and implement JSOM API interaction.</li>
-      <li>Support development on a C# / WPF desktop app with SQL Server 2019.</li>
-      <li>Awarded 'Team of the Year 2020', 'Team of the Quarter (Q4 2020)', and more.</li>
-    </ul>
-    <p>IntegrITS Corp. (412th CS), Configuration Specialist <span class="employmentDates">12/18 - 01/20</span></p>
-    <ul>
-      <li>Produce modern software process documentation for multiple Agile teams.</li>
-      <li>Perform in-depth security vulnerability analysis on critical applications.</li>
-      <li>Provide process improvement consultation for software testers.</li>
-    </ul>
-    <p>AV Web Designs, Web Developer <span class="employmentDates">06/17 - 11/17</span></p>
-    <ul>
-      <li>Develop frontend and backend code on dozens of production websites.</li>
-      <li>Implement WCAG & Section508 web accessibility compliance optimizations.</li>
-      <li>Develop intranet utilities for managing customer website data.</li>
-    </ul>
+    <div *ngFor="let job of dev.jobHistory">
+      <p>{{ job.company }}, {{ job.title }} <span class="employmentDates">{{ job.dates }}</span></p>
+      <ul>
+        <li *ngFor="let duty of job.duties">{{ duty }}</li>
+      </ul>
+    </div>
   </div>
 </div>
